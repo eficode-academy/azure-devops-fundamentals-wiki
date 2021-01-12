@@ -8,6 +8,6 @@ If you are new here, you are probably looking for the `Exercises` in the left me
 
 <details>
   <summary>Hint</summary>
+
   Go to [Exercises/Documentation](/Exercises/Documentation.md).
-  [Exercises/Documentation](./Exercises/Documentation.md)
 </details>
