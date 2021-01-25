@@ -1,7 +1,5 @@
 
-# Documentation
-
-## First steps
+# First steps
 
 In order to do anything you first need the code running locally. Luckily, this can be achieved in three easy steps:
 
@@ -9,4 +7,9 @@ In order to do anything you first need the code running locally. Luckily, this c
 2. Build the code
 3. Run the code locally
 
+<details>
+  <summary>Hint</summary>
+
+The `README.md` file in the repo describes how to build and run the code.
+</details>
 
