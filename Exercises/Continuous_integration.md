@@ -1,54 +1,139 @@
 
 # Task: Automatic Compile
-Create a pipeline to build the code with gradle. It should trigger on pushes to all branches, except main. Also set it to timeout after 5 minutes.
+1. Create a pipeline to build the code with gradle. 
 
-<details>
-  <summary>Step-by-step guide</summary>
+    <details>
+      <summary>Step by step</summary>
 
-1. Navigate to “Pipelines” and click “New Pipeline”. Then “Use the classic editor”.
-2. Hit “Continue”, as the default repo settings are correct.
-Search for the “gradle” template, and apply it.
-3. Set it to trigger automatically when pushing to any branch other than “main”
-4. Test it
-</details>
+    1. Create a file called `ci.yml` containing this minimal pipeline:
+        ```
+        trigger:
+          - *
+
+        pool:
+          vmImage: "ubuntu-latest"
+
+        steps:
+          - script: |
+              echo “Hello, World!”
+            displayName: "Print important message"
+        ```
+    2. Use this step to checkout the code:
+        ```
+        - checkout: self
+        ```
+    2. Use this step to run gradle:
+        ```
+        - task: Gradle@2
+          inputs:
+            workingDirectory: ""
+            gradleWrapperFile: "gradlew"
+            gradleOptions: "-Xmx3072m"
+            javaHomeOption: "JDKVersion"
+            jdkVersionOption: "1.8"
+            jdkArchitectureOption: "x64"
+            publishJUnitResults: true
+            testResultsFiles: "**/TEST-*.xml"
+            tasks: "build"
+        ```
+    3. Go to Pipelines.
+    4. Click "New pipeline".
+    5. Click "Azure Repos Git (YAML)".
+    6. Select the correct repo.
+    7. Click "Existing Azure Pipeline YAML file".
+    8. Select the YAML file, then "Continue".
+    9.  Click the down-arrow next to "Run" and hit "Save".
+    10. Click the three dots in the upper right, and hit "Rename/move".
+    11. Call it "ci".
+    </details>
+
+2. It should trigger on pushes to all branches, except main. 
+
+    <details>
+      <summary>Hint</summary>
+
+    ```
+    trigger:
+      branches:
+        exclude:
+          - main
+    ```
+    </details>
+
+3. Also set it to timeout after 5 minutes.
+
+    <details>
+      <summary>Hint</summary>
+
+    ```
+    timeoutInMinutes: 5
+    ```
+    </details>
 
 # Task: Automatic integration
-Setup a new pipeline to automatically merge a branch into main. It should trigger automatically after the CI build but only on `ready/*` branches. 
+1. First, we need to setup the permissions in the project settings:
+   ![](settings.png)
+2. Setup a new pipeline to automatically merge a branch into main. 
 
-First, though, we need to setup the permissions in the project settings:
+    <details>
+      <summary>Git commands</summary>
 
-<details>
-  <summary>Hint: The git instructions are on the next page.</summary>
+    ```
+    git rebase origin/main
+    git branch main
+    git push origin main:main
+    git push origin :$(Build.SourceBranch)
+    ```
+    </details>
 
-These are the necessary Git commands:
-```
-git rebase origin/main
-git branch main
-git push origin main:main
-git push origin :$(Build.SourceBranch)
-```
-</details>
+    <details>
+      <summary>Hint</summary>
 
-<details>
-  <summary>Step-by-step guide</summary>
+    ```
+    - checkout: self
+      persistCredentials: true
+    ```
+    </details>
 
-1. Create a new pipeline, and select the “Empty job”.
-2. Add a new “Command Line” task, and put the git commands from above into the “Script” part.
-3. Select the “Agent job” and under “Additional options” enable “Allow scripts to access OAuth token”
-4. Under “Triggers” add a “Build completion” trigger, and select your “CI” job. Also set the branch filter so it only runs on `ready/*` branches.
-5. Test it by pushing a commit with:
-```
-git push origin [BRANCH]:ready/[BRANCH]
-```
-6. Test it
-</details>
+3. It should trigger automatically after the CI build but only on `ready/*` branches. 
+
+    <details>
+      <summary>Hint</summary>
+
+    ```
+    resources:
+      pipelines:
+        - pipeline: name
+          source: ci
+          trigger:
+            branches:
+              - ready/*
+    ```
+    </details>
+
+4. Remember to update the "How to contribute" section in the `README.md`.
+5. Test it by pushing a commit to a `ready/` branch.
+
+    <details>
+      <summary>Hint</summary>
+
+    ```
+    git push origin [BRANCH]:ready/[BRANCH]
+    ```
+    </details>
 
 # Task: Safer integration
 Add fast tests to the CI build.
 
 <details>
-  <summary>Step-by-step guide</summary>
+  <summary>Hint</summary>
 
-1. Navigate into the CI pipeline. Because the gradle template automatically takes a parameter for which argument to pass to gradle we can simply change the default value for this parameter. Select “Pipeline” and change “Tasks” to “test”.
-2. Test it
+In the `ci.yml` change
+```
+tasks: "build"
+```
+into
+```
+tasks: "test"
+```
 </details>
