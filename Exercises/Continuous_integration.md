@@ -66,8 +66,12 @@
       <summary>Hint</summary>
 
     ```
-    timeoutInMinutes: 5
+    jobs:
+      - job: Test
+        timeoutInMinutes: 5
     ```
+
+    Important: `steps` needs to be indented to the same level as `timeoutInMinutes`.
     </details>
 
 # Task: Automatic integration
@@ -101,6 +105,7 @@
       <summary>Hint</summary>
 
     ```
+    trigger: none
     resources:
       pipelines:
         - pipeline: name
@@ -118,7 +123,7 @@
       <summary>Hint</summary>
 
     ```
-    git push origin [BRANCH]:ready/[BRANCH]
+    git push origin HEAD:ready/[BRANCH]
     ```
     </details>
 
