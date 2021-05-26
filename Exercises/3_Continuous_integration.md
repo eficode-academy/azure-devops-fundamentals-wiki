@@ -88,18 +88,16 @@
    ![ADO Team permissions screenshot](settings.png)
 
 2. Setup a new pipeline to automatically merge a branch into main.
+   This one will ensure that we have _continuous integration_ so lets name
+   the file `ci.yml` and rename the pipeline accordingly when you have set it up.
 
-    <details>
-      <summary>Git commands</summary>
+   Integrating a branch to main could be done with the following Git commands:
 
     ```sh
     git rebase origin/main
-    git branch main
-    git push origin main:main
+    git push origin HEAD:main
     git push -d origin $(Build.SourceBranch)
     ```
-
-    </details>
 
     <details>
       <summary>Hint</summary>
