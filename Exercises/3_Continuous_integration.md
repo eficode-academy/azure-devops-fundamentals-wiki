@@ -6,7 +6,7 @@
     <details>
       <summary>Step by step</summary>
 
-    1. Create a file called `ci.yml` containing this minimal pipeline:
+    1. Create a file called `build.yml` containing this minimal pipeline:
 
         ```yaml
         trigger:
@@ -51,7 +51,7 @@
     9. Select the YAML file, then "Continue".
     10. Click the down-arrow next to "Run" and hit "Save".
     11. Click the three dots in the upper right, and hit "Rename/move".
-    12. Call it "ci".
+    12. Call it "build".
     </details>
 
 2. It should trigger on pushes to all branches, except main.
@@ -109,7 +109,8 @@
 
     </details>
 
-3. It should trigger automatically after the CI build but only on `ready/*` branches.
+3. It should trigger automatically after a run of the build pipeline
+   but only on branches that match the `ready/*` pattern.
 
     <details>
       <summary>Hint</summary>
@@ -119,7 +120,7 @@
     resources:
       pipelines:
         - pipeline: name
-          source: ci
+          source: build
           trigger:
             branches:
               - ready/*
@@ -146,7 +147,7 @@ Add fast tests to the CI build.
 <details>
   <summary>Hint</summary>
 
-In the `ci.yml` change
+In the `build.yml` change
 
 ```yaml
 tasks: "build"
