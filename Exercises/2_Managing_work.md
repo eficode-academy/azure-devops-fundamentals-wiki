@@ -3,11 +3,20 @@
 
 Before we start doing anything it is nice to get an overview of the state of devops in your new team. Therefore we look up:
 
+
+<details>
+  <summary>Hint</summary>
+
+  Not all of the  questions below can be answered with queries alone.
+</details>
+
+----------
+
+
 1. What is our deployment frequency? How often do we deploy?
 
     <details>
       <summary>Hint</summary>
-
     There is a ticket for every time we have deployed.
     </details>
 
@@ -18,6 +27,7 @@ Before we start doing anything it is nice to get an overview of the state of dev
 
     Create a query to show the columns `Created Date`, and `State Change Date` or `Closed Date` for tickets that are `Done done`.
     </details>
+
 
 3. What is our change failure rate? How many tickets have been `Done done`, but are not currently?
 

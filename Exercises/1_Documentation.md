@@ -10,6 +10,6 @@ In order to do anything you first need the code running locally. Luckily, this c
 <details>
   <summary>Hint</summary>
 
-The `README.md` file in the repo describes how to build and run the code.
+The `README.md` file in the code repo describes how to build and run the code.
 </details>
 
