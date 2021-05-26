@@ -1,7 +1,7 @@
 
 # Task: Automatic Compile
 
-1. Create a pipeline to build the code with gradle. 
+1. Create a pipeline to build the code with gradle.
 
     <details>
       <summary>Step by step</summary>
@@ -10,7 +10,7 @@
 
         ```yaml
         trigger:
-          - *
+          - '*'
 
         pool:
           vmImage: "ubuntu-latest"
@@ -54,7 +54,7 @@
     12. Call it "ci".
     </details>
 
-2. It should trigger on pushes to all branches, except main. 
+2. It should trigger on pushes to all branches, except main.
 
     <details>
       <summary>Hint</summary>
@@ -87,7 +87,7 @@
 1. First, we need to setup the permissions in the project settings:
    ![ADO Team permissions screenshot](settings.png)
 
-2. Setup a new pipeline to automatically merge a branch into main. 
+2. Setup a new pipeline to automatically merge a branch into main.
 
     <details>
       <summary>Git commands</summary>
@@ -111,7 +111,7 @@
 
     </details>
 
-3. It should trigger automatically after the CI build but only on `ready/*` branches. 
+3. It should trigger automatically after the CI build but only on `ready/*` branches.
 
     <details>
       <summary>Hint</summary>

@@ -11,16 +11,16 @@
 
 * Find the four metrics
 
-  - What is our deployment frequency?
-  - What is our lead time?
-  - What is our change failure rate?
-  - What is our mean time to recovery?
+  * What is our deployment frequency?
+  * What is our lead time?
+  * What is our change failure rate?
+  * What is our mean time to recovery?
 
 * Determine what to work on
 
-  - What pbi should you work on?
-  - Can you?
-  - Then what should you work on?
+  * What pbi should you work on?
+  * Can you?
+  * Then what should you work on?
 
 ## 3. Continuous integration
 
@@ -35,7 +35,6 @@
 
 * Add rudimentary feature toggling
 * Automatically trigger deploy from merge pipeline
-
 
 -----------------
 

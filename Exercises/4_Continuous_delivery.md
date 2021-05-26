@@ -6,7 +6,7 @@ is pushed to `main`. It should have a timeout of 30 minutes. Test it.
 
 # Task: Set up a release pipeline (manually triggered)
 
-1. Setup an automatic deployment pipeline. 
+1. Setup an automatic deployment pipeline.
     <details>
       <summary>Hint</summary>
 
