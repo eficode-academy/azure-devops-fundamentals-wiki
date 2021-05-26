@@ -40,7 +40,7 @@ Therefore we will try to answer the following questions:
     There is a query operator called "Was Ever".
     </details>
 
-4. What is our mean time to recovery? How long is it since the tickets from 
+4. What is our mean time to recovery? How long is it since the tickets from
    question 3. were `Done done`?
 
     <details>
