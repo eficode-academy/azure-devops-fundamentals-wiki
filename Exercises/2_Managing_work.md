@@ -58,4 +58,4 @@ Therefore we will try to answer the following questions:
 
 Having gotten our bearings it is time to start being productive:
 
-- Discuss what PBI you should work on?
+- Discuss what PBI (Product Backlog Item) you should work on?
