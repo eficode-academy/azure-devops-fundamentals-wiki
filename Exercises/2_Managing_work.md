@@ -43,10 +43,15 @@ Therefore we will try to answer the following questions:
 4. What is our mean time to recovery? How long is it since the tickets from
    question 3. were `Done done`?
 
+   We don't actually have any "recovered" items in the project, so the best we
+   can do is get an esitmate or lower bound by looking at the tickets from Q3
+   and investigate how long it has taken so far to not fix them yet.
+
     <details>
       <summary>Hint</summary>
 
-    Open them and examine their history to find out when they were first `Done done`.
+    Open them and examine their history to find out when they were first `Done done`
+    and when they were.
     </details>
 
 # Finding work
